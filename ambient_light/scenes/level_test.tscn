@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ambient_light/scenes/big_decoration_tree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parallax/scenes/parallax_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ambient_light/scenes/small_decoration_tree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ambient_light/assets/tileset.png" type="Texture" id=4]
+
+[sub_resource type="TileSet" id=1]
+0/name = "floor_1"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 144, 128, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "decoration_1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 64, 112, 80, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "decoration_2"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 144, 128, 16, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "floor_2"
+3/texture = ExtResource( 4 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 160, 144, 128, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("LightEnvironment:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_cycle"
+length = 15.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("LightEnvironment:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.215686, 0.215686, 0.215686, 1 ) ]
+}
+
+[node name="AmbientLightLevel" type="Node2D"]
+
+[node name="LightEnvironment" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+ambient_color = Color( 0.356863, 0.109804, 0.109804, 1 )
+
+[node name="Tree" type="Node2D" parent="."]
+
+[node name="BigDecorationTree" parent="Tree" instance=ExtResource( 1 )]
+position = Vector2( 59, 174 )
+
+[node name="SmallDecorationTree" parent="Tree" instance=ExtResource( 3 )]
+position = Vector2( 290, 209 )
+
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMap" parent="TileMap"]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 851982, 1, 0, 917511, 2, 0, 917514, 2, 0, 983040, 0, 0, 983048, 3, 0, 983056, 3, 0 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "fade_cycle"
+anims/RESET = SubResource( 2 )
+anims/fade_cycle = SubResource( 3 )

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ambient_light/assets/tileset.png" type="Texture" id=1]
+[ext_resource path="res://ambient_light/scenes/light.tscn" type="PackedScene" id=2]
+
+[node name="SmallDecorationTree" type="Sprite"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 81, 54, 63 )
+
+[node name="Light" parent="." instance=ExtResource( 2 )]
+position = Vector2( -3, 7 )
+
+[node name="Light2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 11, 20 )
+energy = 0.6
+
+[node name="Light3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -17, 10 )
+energy = 0.4
