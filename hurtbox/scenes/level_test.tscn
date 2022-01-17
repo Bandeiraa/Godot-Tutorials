@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://hurtbox/assets/tile/parallax.png" type="Texture" id=1]
+[ext_resource path="res://hurtbox/assets/decoration/big_tree.png" type="Texture" id=2]
+[ext_resource path="res://hurtbox/assets/decoration/large_tree.png" type="Texture" id=3]
+[ext_resource path="res://hurtbox/assets/tile/tileset.png" type="Texture" id=4]
+[ext_resource path="res://hurtbox/assets/tile/moon.png" type="Texture" id=5]
+[ext_resource path="res://hurtbox/scenes/stormhead.tscn" type="PackedScene" id=6]
+[ext_resource path="res://hurtbox/assets/decoration/robot.png" type="Texture" id=7]
+
+[sub_resource type="TileSet" id=1]
+0/name = "floor"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="LevelTest" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 384, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
+margin_right = 384.0
+margin_bottom = 256.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.05, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 408.0
+margin_bottom = 280.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 384, 0 )
+
+[node name="Floor" type="TileMap" parent="ParallaxBackground/ParallaxLayer3"]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 384, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer4"]
+margin_left = 2.0
+margin_top = 124.0
+margin_right = 42.0
+margin_bottom = 172.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer4"]
+margin_left = 180.0
+margin_top = 63.0
+margin_right = 220.0
+margin_bottom = 111.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer4"]
+margin_left = 337.0
+margin_top = 76.0
+margin_right = 377.0
+margin_bottom = 124.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="Tree1" type="Sprite" parent="Decoration"]
+position = Vector2( 81, 183 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Tree2" type="Sprite" parent="Decoration"]
+position = Vector2( 256, 182 )
+texture = ExtResource( 3 )
+
+[node name="Tree3" type="Sprite" parent="Decoration"]
+position = Vector2( 556, 183 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Tree4" type="Sprite" parent="Decoration"]
+position = Vector2( 731, 182 )
+texture = ExtResource( 3 )
+
+[node name="Tree5" type="Sprite" parent="Decoration"]
+position = Vector2( 315, 183 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Tree6" type="Sprite" parent="Decoration"]
+position = Vector2( 490, 182 )
+texture = ExtResource( 3 )
+
+[node name="Tree7" type="Sprite" parent="Decoration"]
+position = Vector2( 899, 183 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Tree8" type="Sprite" parent="Decoration"]
+position = Vector2( 1074, 182 )
+texture = ExtResource( 3 )
+
+[node name="Tree9" type="Sprite" parent="Decoration"]
+position = Vector2( -254, 183 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Tree10" type="Sprite" parent="Decoration"]
+position = Vector2( -79, 182 )
+texture = ExtResource( 3 )
+
+[node name="Tree11" type="Sprite" parent="Decoration"]
+position = Vector2( -136, 183 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Tree12" type="Sprite" parent="Decoration"]
+position = Vector2( 39, 182 )
+texture = ExtResource( 3 )
+
+[node name="StormHead" parent="." instance=ExtResource( 6 )]
+position = Vector2( 26, 168 )

@@ -6,3 +6,4 @@
 position = Vector2( -34, 18 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
+shadow_enabled = true
